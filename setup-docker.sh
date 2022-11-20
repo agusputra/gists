@@ -1,8 +1,15 @@
 #!/bin/bash
+
+# Script for ec2 user data to setup Docker.
+
+# Scripts entered as user data are run as the root user.
+# Also, because the script is not run interactively, you cannot include commands that require user feedback (such as apt update without the -y flag).
+# More: https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/user-data.html#user-data-console
+
 set -ex
 export DEBIAN_FRONTEND=noninteractive
 
-#apt remove docker docker-engine docker.io containerd runc
+# apt remove docker docker-engine docker.io containerd runc
 
 apt update
 apt upgrade
